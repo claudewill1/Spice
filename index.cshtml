@@ -1,4 +1,4 @@
-﻿@model Spice.Models.ViewModels.IndexViewModel
+@model Spice.Models.ViewModels.IndexViewModel
 
 <br />
 
@@ -38,25 +38,24 @@
 
 }
 
-<br />
-<br />
+<br /><br />
 
-<div class="backgroundWhite container">
-    
-    <ul id="menu-filters" class="menu-filter-list list-inline text-center">
-        <li class="filter active btn btn-secondary ml-1 mr-1" data-filter="menu-restaurant">Show All</li>
-        @foreach(var item in Model.Category)
-            {
-                <li class="filter ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
-            }
-    </ul>
+      <div class="backgroundWhite container">
+         
+          <ul id="menu-filters" class="menu-filter-list list-inline text-center">
+              <li class="active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Show All</li>
+
+              @foreach (var item in Model.Category)
+              {
+                  <li class="ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+              }
+          </ul>
 
 
-    @foreach(var category in Model.Category)
-    {
-        <div class="row" id="menu-wrapper"> 
-           
-            <partial name="_ThumbnailAreaPartial" model="@Model.MenuItem.Where(u=>u.Category.Name.Equals(category.Name))" />
-        </div>
-    }
-</div>
+          @foreach(var category in Model.Category)
+          {
+              <div class="row" id="menu-wrapper">
+                  <partial name="_ThumbnailAreaPartial" model="@Model.MenuItem.Where(u=>u.Category.Name.Equals(category.Name))" />
+              </div>
+          }
+      </div>
